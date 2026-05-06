@@ -49,6 +49,15 @@ public class UsuarioEntity {
     private LocalDateTime dataAtualizacao;
 
     @OneToMany(mappedBy = "usuario")
-    private List<GrupoEntity> grupos;
+    private List<GrupoUsuarioEntity> grupos;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<MovimentacaoEntity> movimentacoes;
+
+    @OneToMany(mappedBy = "usario")
+    private List<MensalidadeEntity> mensalidades;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<RifaEntity> rifas;
 
 }

@@ -25,16 +25,15 @@ public class GrupoUsuarioEntity {
     private GrupoEntity grupo;
 
 
-    @Column (name = "data_entrada", nullable = false)
+    @Column(name = "data_entrada", nullable = false)
     @NotBlank
     private LocalDate dataEntrada;
 
 
-    @Column (name = "papel", nullable = false)
+    @Column(name = "papel", nullable = false)
     @Enumerated(EnumType.STRING)
     @NotBlank
     private Papel papel;
-
 
 
 }

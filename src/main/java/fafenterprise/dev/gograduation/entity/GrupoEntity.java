@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -23,23 +24,23 @@ public class GrupoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
-    @Column (name = "nome",  nullable = false)
+    @Column(name = "nome", nullable = false)
     @NotBlank
     private String nome;
 
-    @Column (name = "meta", nullable = false)
+    @Column(name = "meta", nullable = false, precision = 10, scale = 2)
     @NotBlank
-    private Double meta;
+    private BigDecimal meta;
 
-    @Column (name = "turma", nullable = false)
+    @Column(name = "turma", nullable = false)
     @NotBlank
     private String turma;
 
-    @Column (name = "curso", nullable = false)
+    @Column(name = "curso", nullable = false)
     @NotBlank
     private String curso;
 
-    @Column(name ="token", nullable = false)
+    @Column(name = "token", nullable = false, unique = true)
     @NotBlank
     private UUID token;
 
@@ -53,5 +54,17 @@ public class GrupoEntity {
 
 
     @OneToMany(mappedBy = "grupo")
-    private List<UsuarioEntity> usuarios;
+    private List<GrupoUsuarioEntity> usuarios;
+
+    @OneToMany(mappedBy = "grupo")
+    private List<MovimentacaoEntity> movimentacoes;
+
+    @OneToMany(mappedBy = "grupo")
+    private List<MensalidadeEntity> mensalidades;
+
+    @OneToMany(mappedBy = "grupo")
+    private List<DespesasPrevistasEntity> despesasPrevistas;
+
+    @OneToMany(mappedBy = "grupo")
+    private List<RifaEntity> rifas;
 }
