@@ -1,4 +1,4 @@
-package fafenterprise.dev.gograduation.entity;
+package fafenterprise.dev.gograduation.Entity.tabelapropria;
 
 
 import jakarta.persistence.*;

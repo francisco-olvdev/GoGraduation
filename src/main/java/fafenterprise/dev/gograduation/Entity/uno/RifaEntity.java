@@ -1,6 +1,7 @@
-package fafenterprise.dev.gograduation.entity;
+package fafenterprise.dev.gograduation.Entity.uno;
 
 
+import fafenterprise.dev.gograduation.Entity.tabelapropria.RifaVendedorEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,7 +37,7 @@ public class RifaEntity {
     private Integer totalBilhetes;
 
     @OneToMany
-    private List<RifaEntity> rifas;
+    private List<RifaVendedorEntity> vendedor;
 
 
 }

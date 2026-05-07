@@ -1,5 +1,8 @@
-package fafenterprise.dev.gograduation.entity;
+package fafenterprise.dev.gograduation.Entity.uno;
 
+import fafenterprise.dev.gograduation.Entity.tabelapropria.AdesaoMensalidadeEntity;
+import fafenterprise.dev.gograduation.Entity.tabelapropria.GrupoUsuarioEntity;
+import fafenterprise.dev.gograduation.Entity.tabelapropria.RifaVendedorEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -55,9 +58,9 @@ public class UsuarioEntity {
     private List<MovimentacaoEntity> movimentacoes;
 
     @OneToMany(mappedBy = "usario")
-    private List<MensalidadeEntity> mensalidades;
+    private List<AdesaoMensalidadeEntity> mensalidades;
 
     @OneToMany(mappedBy = "usuario")
-    private List<RifaEntity> rifas;
+    private List<RifaVendedorEntity> rifas;
 
 }

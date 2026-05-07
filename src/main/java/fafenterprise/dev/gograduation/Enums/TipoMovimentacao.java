@@ -1,4 +1,4 @@
-package fafenterprise.dev.gograduation.enums;
+package fafenterprise.dev.gograduation.Enums;
 
 public enum TipoMovimentacao {
     SAIDA,

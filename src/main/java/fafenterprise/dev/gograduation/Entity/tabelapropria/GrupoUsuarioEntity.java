@@ -1,7 +1,9 @@
-package fafenterprise.dev.gograduation.entity;
+package fafenterprise.dev.gograduation.Entity.tabelapropria;
 
 
-import fafenterprise.dev.gograduation.enums.Papel;
+import fafenterprise.dev.gograduation.Entity.uno.GrupoEntity;
+import fafenterprise.dev.gograduation.Entity.uno.UsuarioEntity;
+import fafenterprise.dev.gograduation.Enums.Papel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 

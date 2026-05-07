@@ -1,7 +1,9 @@
-package fafenterprise.dev.gograduation.entity;
+package fafenterprise.dev.gograduation.Entity.tabelapropria;
 
 
-import fafenterprise.dev.gograduation.enums.StatusAdesao;
+import fafenterprise.dev.gograduation.Entity.uno.MensalidadeEntity;
+import fafenterprise.dev.gograduation.Entity.uno.UsuarioEntity;
+import fafenterprise.dev.gograduation.Enums.StatusAdesao;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity

@@ -1,13 +1,14 @@
-package fafenterprise.dev.gograduation.entity;
+package fafenterprise.dev.gograduation.Entity.tabelapropria;
 
 
+import fafenterprise.dev.gograduation.Entity.uno.RifaEntity;
+import fafenterprise.dev.gograduation.Entity.uno.UsuarioEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.swing.plaf.basic.BasicIconFactory;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -18,7 +19,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class RifaVendedor {
+public class RifaVendedorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;

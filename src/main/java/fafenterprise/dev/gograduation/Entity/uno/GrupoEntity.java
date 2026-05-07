@@ -1,6 +1,7 @@
-package fafenterprise.dev.gograduation.entity;
+package fafenterprise.dev.gograduation.Entity.uno;
 
 
+import fafenterprise.dev.gograduation.Entity.tabelapropria.GrupoUsuarioEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

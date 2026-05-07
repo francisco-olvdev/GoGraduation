@@ -1,7 +1,7 @@
-package fafenterprise.dev.gograduation.entity;
+package fafenterprise.dev.gograduation.Entity.uno;
 
 
-import fafenterprise.dev.gograduation.enums.TipoMovimentacao;
+import fafenterprise.dev.gograduation.Enums.TipoMovimentacao;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
