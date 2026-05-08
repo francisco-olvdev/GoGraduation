@@ -36,7 +36,7 @@ public class RifaEntity {
     @Column(name = "total_bilhetes")
     private Integer totalBilhetes;
 
-    @OneToMany
+    @OneToMany(mappedBy = "rifa")
     private List<RifaVendedorEntity> vendedor;
 
 
