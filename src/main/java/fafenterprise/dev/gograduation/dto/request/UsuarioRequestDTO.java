@@ -10,7 +10,6 @@ public record UsuarioRequestDTO(
         String senha,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
-
 ) {
 }
 
