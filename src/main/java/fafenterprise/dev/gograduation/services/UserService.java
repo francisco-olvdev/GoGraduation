@@ -1,9 +1,9 @@
 package fafenterprise.dev.gograduation.services;
 
-import fafenterprise.dev.gograduation.dto.request.UsuarioRequestDTO;
-import fafenterprise.dev.gograduation.dto.response.UsuarioResponseDTO;
-import fafenterprise.dev.gograduation.entity.uno.UsuarioEntity;
-import fafenterprise.dev.gograduation.repository.UsuarioRepository;
+import fafenterprise.dev.gograduation.dto.request.UserRequestDTO;
+import fafenterprise.dev.gograduation.dto.response.UserResponseDTO;
+import fafenterprise.dev.gograduation.entity.uno.UserEntity;
+import fafenterprise.dev.gograduation.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,53 +15,53 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserService {
 
-    final UsuarioRepository usuarioRepository;
+    final UserRepository userRepository;
 
-    public UsuarioResponseDTO create(UsuarioRequestDTO request) {
-        UsuarioEntity usuario = new UsuarioEntity();
+    public UserResponseDTO create(UserRequestDTO request) {
+        UserEntity usuario = new UserEntity();
 
-        usuario.setNome(request.name());
+        usuario.setName(request.name());
         usuario.setEmail(request.email());
         usuario.setTelefone(request.telefone());
         usuario.setLogin(request.login());
-        usuario.setSenha(request.senha());
-        usuario.setDataCadastro(request.createdAt());
-        usuario.setDataAtualizacao(request.updatedAt());
+        usuario.setPassword(request.senha());
+        usuario.setCreatedAt(request.createdAt());
+        usuario.setUpdatedAt(request.updatedAt());
 
-        UsuarioEntity novoUsuario = usuarioRepository.save(usuario);
+        UserEntity novoUsuario = userRepository.save(usuario);
 
-        return new UsuarioResponseDTO(
+        return new UserResponseDTO(
             novoUsuario.getId(),
-            novoUsuario.getNome(),
+            novoUsuario.getName(),
             novoUsuario.getEmail(),
             novoUsuario.getTelefone());
     }
 
-    public UsuarioResponseDTO update(UUID id, UsuarioRequestDTO request) {
-        UsuarioEntity usuario = usuarioRepository.findById(id).orElseThrow();
+    public UserResponseDTO update(UUID id, UserRequestDTO request) {
+        UserEntity usuario = userRepository.findById(id).orElseThrow();
 
-        usuario.setNome(request.name());
+        usuario.setName(request.name());
         usuario.setEmail(request.email());
         usuario.setTelefone(request.telefone());
         usuario.setLogin(request.login());
-        usuario.setSenha(request.senha());
-        usuario.setDataCadastro(request.createdAt());
-        usuario.setDataAtualizacao(LocalDateTime.now());
+        usuario.setPassword(request.senha());
+        usuario.setCreatedAt(request.createdAt());
+        usuario.setUpdatedAt(LocalDateTime.now());
 
-        UsuarioEntity usuarioAtualizado = usuarioRepository.save(usuario);
+        UserEntity usuarioAtualizado = userRepository.save(usuario);
 
-        return new UsuarioResponseDTO(
+        return new UserResponseDTO(
                 usuarioAtualizado.getId(),
-                usuarioAtualizado.getNome(),
+                usuarioAtualizado.getName(),
                 usuarioAtualizado.getEmail(),
                 usuarioAtualizado.getTelefone()
         );
 
     }
-    public List<UsuarioResponseDTO> listarTodos(){
-        return usuarioRepository.findAll()
+    public List<UserResponseDTO> listarTodos(){
+        return userRepository.findAll()
             .stream()
-            .map(usuario -> new UsuarioResponseDTO(
+            .map(usuario -> new UserResponseDTO(
                 usuario.getId(),
                 usuario.getLogin(),
                 usuario.getEmail(),
@@ -71,10 +71,10 @@ public class UserService {
     }
 
     public void deletar(UUID id) {
-        UsuarioEntity usuario = usuarioRepository.findById(id)
+        UserEntity usuario = userRepository.findById(id)
                 .orElseThrow();
 
-        usuarioRepository.delete(usuario);
+        userRepository.delete(usuario);
     }
 
 

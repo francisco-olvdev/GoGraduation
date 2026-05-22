@@ -1,6 +1,6 @@
 package fafenterprise.dev.gograduation.enums;
 
-public enum Papel {
+public enum Role {
 
     ADMIN,
     MEMBRO

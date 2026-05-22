@@ -10,26 +10,26 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "despesas_previstas")
+@Table(name = "projected_expenses")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class DespesasPrevistasEntity {
+public class ExpenseEntity {
     @Id
     @GeneratedValue
     private UUID id;
 
-    @JoinColumn(name = "grupo_id")
+    @JoinColumn(name = "group_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    private GrupoEntity grupo;
+    private GroupEntity group;
 
 
-    @Column(nullable = false, length = 100)
-    private String descricao;
+    @Column(nullable = false, length = 100, name = "description")
+    private String description;
 
-    @Column(nullable = false, name = "valor")
-    private BigDecimal valor;
+    @Column(nullable = false, name = "value")
+    private BigDecimal value;
 
 }

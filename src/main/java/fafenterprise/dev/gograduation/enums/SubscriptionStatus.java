@@ -1,6 +1,6 @@
 package fafenterprise.dev.gograduation.enums;
 
-public enum StatusAdesao {
+public enum SubscriptionStatus {
     ATIVA, SUSPENSA, CANCELADA
 
 }

@@ -1,6 +1,6 @@
 package fafenterprise.dev.gograduation.enums;
 
-public enum TipoMovimentacao {
+public enum TransactionType {
     SAIDA,
     ENTRADA
 }

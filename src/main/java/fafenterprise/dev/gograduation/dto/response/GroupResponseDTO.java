@@ -6,7 +6,8 @@ import java.util.UUID;
 public record GroupResponseDTO(
         UUID id,
         String name,
-        BigDecimal goal
+        BigDecimal goal,
+        String team
 
 ) {
 }
