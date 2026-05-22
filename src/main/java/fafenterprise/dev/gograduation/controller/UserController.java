@@ -22,7 +22,7 @@ public class UserController {
 
     @GetMapping
     public List<UserResponseDTO> listAll() {
-        return userService.listarTodos();
+        return userService.listAll();
     }
 
     @PutMapping("/{id}")
@@ -32,6 +32,6 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable UUID id) {
-        userService.deletar(id);
+        userService.delete(id);
     }
 }

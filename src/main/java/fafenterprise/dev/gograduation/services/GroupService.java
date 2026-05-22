@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +39,7 @@ public class GroupService {
 
     }
 
-    public List<GroupResponseDTO> findAll() {
+    public List<GroupResponseDTO> listAll() {
         return groupRepository.findAll()
                 .stream()
                 .map(group -> new GroupResponseDTO(
@@ -47,6 +48,30 @@ public class GroupService {
                         group.getGoal(),
                         group.getTeam()
                 )).toList();
+    }
+
+    public GroupResponseDTO update(UUID id, GroupRequestDTO group){
+        GroupEntity grp = groupRepository.findById(id).orElseThrow();
+
+        grp.setName(group.name());
+        grp.setCourse(group.course());
+        grp.setGoal(group.goal());
+        grp.setCourse(group.course());
+
+        
+        GroupEntity updatedGroup = groupRepository.save(grp);
+
+        return new GroupResponseDTO(
+            updatedGroup.getId(), 
+            updatedGroup.getName(), 
+            updatedGroup.getGoal(), 
+            updatedGroup.getTeam()
+        );
+    }
+
+    public void delete(UUID id){
+        GroupEntity group = groupRepository.findById(id).orElseThrow();
+        groupRepository.delete(group);
     }
 
 

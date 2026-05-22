@@ -58,7 +58,7 @@ public class UserService {
         );
 
     }
-    public List<UserResponseDTO> listarTodos(){
+    public List<UserResponseDTO> listAll(){
         return userRepository.findAll()
             .stream()
             .map(usuario -> new UserResponseDTO(
@@ -70,7 +70,7 @@ public class UserService {
 
     }
 
-    public void deletar(UUID id) {
+    public void delete(UUID id) {
         UserEntity usuario = userRepository.findById(id)
                 .orElseThrow();
 
