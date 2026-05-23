@@ -1,0 +1,74 @@
+package fafenterprise.dev.gograduation.services;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import fafenterprise.dev.gograduation.dto.request.ExpenseRequestDTO;
+import fafenterprise.dev.gograduation.dto.response.ExpenseResponseDTO;
+import fafenterprise.dev.gograduation.entity.uno.ExpenseEntity;
+import fafenterprise.dev.gograduation.entity.uno.GroupEntity;
+import fafenterprise.dev.gograduation.repository.ExpendsRepository;
+import fafenterprise.dev.gograduation.repository.GroupRepository;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ExpenseService{
+
+    final ExpendsRepository expenseRepository;
+    final GroupRepository groupRepository;
+
+    public ExpenseResponseDTO create(ExpenseRequestDTO expenseRequestDTO){
+        ExpenseEntity expense = new ExpenseEntity();
+        GroupEntity group = groupRepository.findById(expenseRequestDTO.groupId()).orElseThrow();
+
+
+        expense.setDescription(expenseRequestDTO.description());
+        expense.setValue(expenseRequestDTO.value());
+        expense.setGroup(group);
+
+        expenseRepository.save(expense);
+
+        return new ExpenseResponseDTO(
+            expense.getId(),
+            expense.getGroup().getId(),
+            expense.getDescription(),
+            expense.getValue());
+
+
+    }
+
+    public ExpenseResponseDTO update(UUID id, ExpenseRequestDTO expenseRequestDTO){
+        ExpenseEntity expense = expenseRepository.findById(id).orElseThrow();
+        GroupEntity group = groupRepository.findById(expenseRequestDTO.groupId()).orElseThrow();
+        
+        expense.setDescription(expenseRequestDTO.description());
+        expense.setGroup(group);
+        expense.setValue(expenseRequestDTO.value());
+
+        expenseRepository.save(expense);
+
+        return new ExpenseResponseDTO(
+            expense.getId(),
+            expense.getGroup().getId(),  
+            expense.getDescription(), 
+            expense.getValue()
+        );
+
+
+
+    }
+
+
+    public List<ExpenseResponseDTO> listAll(){
+        return expenseRepository
+        .findAll().stream()
+        .map(expense -> new ExpenseResponseDTO(expense.getId(), expense.getGroup().getId(), expense.getDescription(), expense.getValue())).toList();
+    }
+
+    public void delete(UUID id){
+        expenseRepository.delete(null);
+    }
+}
