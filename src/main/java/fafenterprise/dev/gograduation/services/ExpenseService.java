@@ -69,6 +69,8 @@ public class ExpenseService{
     }
 
     public void delete(UUID id){
-        expenseRepository.delete(null);
+
+       ExpenseEntity entity =  expenseRepository.findById(id).orElseThrow();
+       expenseRepository.delete(entity);
     }
 }

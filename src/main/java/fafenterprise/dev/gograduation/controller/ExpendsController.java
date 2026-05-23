@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fafenterprise.dev.gograduation.dto.request.ExpenseRequestDTO;
 import fafenterprise.dev.gograduation.dto.response.ExpenseResponseDTO;
 import fafenterprise.dev.gograduation.services.ExpenseService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import lombok.RequiredArgsConstructor;
 
 
