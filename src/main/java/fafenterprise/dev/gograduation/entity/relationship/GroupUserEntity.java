@@ -6,12 +6,20 @@ import fafenterprise.dev.gograduation.entity.uno.UserEntity;
 import fafenterprise.dev.gograduation.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
 @Table(name = "group_user")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class GroupUserEntity {
     @Id
     @GeneratedValue

@@ -3,6 +3,7 @@ package fafenterprise.dev.gograduation.services;
 
 import fafenterprise.dev.gograduation.dto.request.GroupRequestDTO;
 import fafenterprise.dev.gograduation.dto.response.GroupResponseDTO;
+import fafenterprise.dev.gograduation.entity.relationship.GroupUserEntity;
 import fafenterprise.dev.gograduation.entity.uno.GroupEntity;
 import fafenterprise.dev.gograduation.repository.GroupRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.UUID;
 public class GroupService {
 
     final GroupRepository groupRepository;
+    final GroupUserService groupUserService;
 
     public GroupResponseDTO create(GroupRequestDTO groupRequestDTO) {
 
@@ -32,6 +34,10 @@ public class GroupService {
         groupEntity.setUpdatedAt(LocalDateTime.now());
 
         GroupEntity newGroup = groupRepository.save(groupEntity);
+
+        groupUserService.create(groupRequestDTO.createdBy(), newGroup.getId());
+
+
 
         return new GroupResponseDTO(
             newGroup.getId(), newGroup.getName(), newGroup.getGoal(), newGroup.getTeam()
@@ -74,6 +80,8 @@ public class GroupService {
         groupRepository.delete(group);
     }
 
+
+    
 
 
 }
