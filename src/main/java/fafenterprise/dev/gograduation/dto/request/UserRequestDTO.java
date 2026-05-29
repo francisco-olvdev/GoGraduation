@@ -7,9 +7,7 @@ public record UserRequestDTO(
         String email,
         String telefone,
         String login,
-        String senha,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        String senha
 ) {
 }
 

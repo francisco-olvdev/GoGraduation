@@ -18,7 +18,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransationEntity {
+public class TransactionEntity {
     @Id
     @GeneratedValue
     private UUID id;

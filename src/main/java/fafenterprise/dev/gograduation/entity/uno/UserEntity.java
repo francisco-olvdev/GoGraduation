@@ -55,7 +55,7 @@ public class UserEntity {
     private List<GroupUserEntity> groups;
 
     @OneToMany(mappedBy = "user")
-    private List<TransationEntity> transations;
+    private List<TransactionEntity> transations;
 
     @OneToMany(mappedBy = "user")
     private List<SubscriptionEntity> monthlyFee;

@@ -5,6 +5,8 @@ import fafenterprise.dev.gograduation.dto.response.UserResponseDTO;
 import fafenterprise.dev.gograduation.entity.uno.UserEntity;
 import fafenterprise.dev.gograduation.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,6 +18,7 @@ import java.util.UUID;
 public class UserService {
 
     final UserRepository userRepository;
+    final PasswordEncoder passwordEncoder;
 
     public UserResponseDTO create(UserRequestDTO request) {
         UserEntity usuario = new UserEntity();
@@ -24,9 +27,9 @@ public class UserService {
         usuario.setEmail(request.email());
         usuario.setTelefone(request.telefone());
         usuario.setLogin(request.login());
-        usuario.setPassword(request.senha());
-        usuario.setCreatedAt(request.createdAt());
-        usuario.setUpdatedAt(request.updatedAt());
+        usuario.setPassword(passwordEncoder.encode(request.senha()));
+        usuario.setCreatedAt(LocalDateTime.now());
+        usuario.setUpdatedAt(LocalDateTime.now());
 
         UserEntity novoUsuario = userRepository.save(usuario);
 
@@ -44,8 +47,7 @@ public class UserService {
         usuario.setEmail(request.email());
         usuario.setTelefone(request.telefone());
         usuario.setLogin(request.login());
-        usuario.setPassword(request.senha());
-        usuario.setCreatedAt(request.createdAt());
+         usuario.setPassword(passwordEncoder.encode(request.senha()));
         usuario.setUpdatedAt(LocalDateTime.now());
 
         UserEntity usuarioAtualizado = userRepository.save(usuario);

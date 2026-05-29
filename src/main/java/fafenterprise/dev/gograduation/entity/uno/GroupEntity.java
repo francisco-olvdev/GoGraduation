@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "grops")
+@Table(name = "groups")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -53,7 +53,7 @@ public class GroupEntity {
     private List<GroupUserEntity> users;
 
     @OneToMany(mappedBy = "group")
-    private List<TransationEntity> transations;
+    private List<TransactionEntity> transations;
 
     @OneToMany(mappedBy = "group")
     private List<MonthlyFeeEntity> monthlyFees;
