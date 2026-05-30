@@ -8,14 +8,12 @@ import org.springframework.stereotype.Service;
 
 import fafenterprise.dev.gograduation.entity.uno.UserEntity;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.SignatureAlgorithm; // (pode remover se estiver dando conflito)
+
 @Service
 public class JwtService {
 
-    private static final String SECRET =
-            "your-very-strong-secret-key-must-be-at-least-32-chars";
+    private static final String SECRET = "your-very-strong-secret-key-must-be-at-least-32-chars";
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));

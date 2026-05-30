@@ -20,25 +20,6 @@ public class UserService {
     final UserRepository userRepository;
     final PasswordEncoder passwordEncoder;
 
-    public UserResponseDTO create(UserRequestDTO request) {
-        UserEntity usuario = new UserEntity();
-
-        usuario.setName(request.name());
-        usuario.setEmail(request.email());
-        usuario.setTelefone(request.telefone());
-        usuario.setLogin(request.login());
-        usuario.setPassword(passwordEncoder.encode(request.senha()));
-        usuario.setCreatedAt(LocalDateTime.now());
-        usuario.setUpdatedAt(LocalDateTime.now());
-
-        UserEntity novoUsuario = userRepository.save(usuario);
-
-        return new UserResponseDTO(
-            novoUsuario.getId(),
-            novoUsuario.getName(),
-            novoUsuario.getEmail(),
-            novoUsuario.getTelefone());
-    }
 
     public UserResponseDTO update(UUID id, UserRequestDTO request) {
         UserEntity usuario = userRepository.findById(id).orElseThrow();

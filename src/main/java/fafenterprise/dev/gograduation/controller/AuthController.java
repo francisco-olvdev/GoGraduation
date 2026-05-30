@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fafenterprise.dev.gograduation.dto.request.LoginRequestDTO;
+import fafenterprise.dev.gograduation.dto.request.UserRequestDTO;
 import fafenterprise.dev.gograduation.dto.response.LoginResponseDTO;
+import fafenterprise.dev.gograduation.dto.response.UserResponseDTO;
 import fafenterprise.dev.gograduation.services.AuthService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,4 +24,9 @@ public class AuthController {
         return new LoginResponseDTO(authService.login(request));
 
     }
+
+    @PostMapping("/register")
+    public UserResponseDTO register(@RequestBody UserRequestDTO request){
+        return authService.register(request);
+}
 }

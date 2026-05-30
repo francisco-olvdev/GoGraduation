@@ -15,11 +15,6 @@ import java.util.UUID;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping
-    public UserResponseDTO create(@RequestBody UserRequestDTO request) {
-        return userService.create(request);
-    }
-
     @GetMapping
     public List<UserResponseDTO> listAll() {
         return userService.listAll();
