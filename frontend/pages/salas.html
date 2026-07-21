@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bora Formar - Salas</title>
+        <link rel="stylesheet" href="../css/salas.css">
+    </head>
+    <body>
+        <header id="header-content">
+            <button id="menu-toggle" aria-label="Menu">☰</button>
+            <h1>Salas</h1>
+        </header>
+        <main id="main-content">
+            <ul id="room-list"></ul>
+            <p id="empty-state" class="hidden">Você ainda não participa de nenhuma sala.</p>
+        </main>
+        <button id="add-button" aria-label="Adicionar">+</button>
+        <div id="add-menu">
+            <a id="link-criar-sala" href="criar-sala.html">Criar Sala</a>
+            <a id="link-entrar-sala" href="entrar-sala.html">Participar</a>
+        </div>
+
+        <script type="module">
+            import userService from "../js/services/userService.js";
+            import authService from "../js/services/authService.js";
+
+            if (!authService.isAuthenticated()) {
+                window.location.href = "login.html";
+            }
+
+            const roomList = document.getElementById("room-list");
+            const emptyState = document.getElementById("empty-state");
+            const addButton = document.getElementById("add-button");
+            const addMenu = document.getElementById("add-menu");
+
+            addButton.addEventListener("click", () => {
+                addMenu.classList.toggle("open");
+            });
+
+            async function loadGroups() {
+                try {
+                    const groups = await userService.getJoinedGroups();
+
+                    if (!groups || groups.length === 0) {
+                        emptyState.classList.remove("hidden");
+                        return;
+                    }
+
+                    groups.forEach((group) => {
+                        const item = document.createElement("li");
+                        const button = document.createElement("button");
+                        button.className = "room-button";
+                        button.textContent = group.name;
+                        button.addEventListener("click", () => {
+                            window.location.href = `sala.html?id=${group.id}`;
+                        });
+                        item.appendChild(button);
+                        roomList.appendChild(item);
+                    });
+                } catch (error) {
+                    emptyState.textContent = error.message || "Não foi possível carregar suas salas.";
+                    emptyState.classList.remove("hidden");
+                }
+            }
+
+            loadGroups();
+        </script>
+    </body>
+</html>
