@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import fafenterprise.dev.gograduation.dto.MonthlyFeeDTO;
-import fafenterprise.dev.gograduation.entity.relationship.GroupUserEntity;
 import fafenterprise.dev.gograduation.entity.uno.GroupEntity;
 import fafenterprise.dev.gograduation.entity.uno.MonthlyFeeEntity;
 import fafenterprise.dev.gograduation.repository.GroupRepository;
