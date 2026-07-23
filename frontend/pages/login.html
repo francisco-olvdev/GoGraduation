@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bora Formar - Acessar conta</title>
+        <link rel="stylesheet" href="../css/login.css">
+    </head>
+    <body>
+        <main id="main-content">
+            <h1>Login</h1>
+            <form id="form-login">
+                <label>Usuário:</label>
+                <input id="user" class="form-item" type="text" required>
+                <label>Senha:</label>
+                <input id="password" class="form-item" type="password" required>
+
+                <p id="form-error" class="hidden"></p>
+
+                <div id="buttons-login">
+                    <input id="button-login" type="submit" value="Acessar">
+                    <a id="button-register" href="register.html">Criar conta</a>
+                </div>
+            </form>
+        </main>
+
+        <footer id="footer-content">
+            <p>© 2026 | Bora formar</p>
+        </footer>
+
+        <script type="module">
+            import authService from "../js/services/authService.js";
+
+            const form = document.getElementById("form-login");
+            const errorMessage = document.getElementById("form-error");
+
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                errorMessage.classList.add("hidden");
+
+                const login = document.getElementById("user").value;
+                const password = document.getElementById("password").value;
+
+                try {
+                    await authService.login(login, password);
+                    window.location.href = "salas.html";
+                } catch (error) {
+                    errorMessage.textContent = error.message || "Usuário ou senha inválidos.";
+                    errorMessage.classList.remove("hidden");
+                }
+            });
+        </script>
+    </body>
+</html>

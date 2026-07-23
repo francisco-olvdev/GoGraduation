@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bora Formar - Entrar na Sala</title>
+        <link rel="stylesheet" href="../css/entrar-sala.css">
+    </head>
+    <body>
+        <header id="header-content">
+            <button id="menu-toggle" aria-label="Menu">☰</button>
+            <h1>Salas</h1>
+        </header>
+        <main id="main-content">
+            <h2>Entrar na Sala</h2>
+            <form id="form-entrar-sala">
+                <label>código de acesso:</label>
+                <input id="token" class="form-item" type="text" required>
+
+                <p id="form-error" class="hidden"></p>
+
+                <input id="button-entrar" type="submit" value="Entrar">
+            </form>
+        </main>
+
+        <script type="module">
+            import groupService from "../js/services/groupService.js";
+
+            const form = document.getElementById("form-entrar-sala");
+            const errorMessage = document.getElementById("form-error");
+
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                errorMessage.classList.add("hidden");
+
+                const token = document.getElementById("token").value;
+
+                try {
+                    await groupService.joinByToken(token);
+                    window.location.href = "salas.html";
+                } catch (error) {
+                    errorMessage.textContent = error.message || "Código inválido.";
+                    errorMessage.classList.remove("hidden");
+                }
+            });
+        </script>
+    </body>
+</html>
