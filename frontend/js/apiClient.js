@@ -1,4 +1,4 @@
-const API_BASE_URL = "bora-formar-api-ergrardbhvhwcpa6.eastus-01.azurewebsites.net";
+const API_BASE_URL = "https://bora-formar-api-ergrardbhvhwcpa6.eastus-01.azurewebsites.net";
 
 function getToken() {
     return localStorage.getItem("token");
